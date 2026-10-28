@@ -4,7 +4,7 @@
   "description": "Benchmark for Dioxus",
   "license": "ISC",
   "js-framework-benchmark": {
-    "frameworkVersion": "0.7.2",
+    "frameworkVersion": "0.7.10",
     "frameworkHomeURL": "https://dioxuslabs.com/",
     "customURL": "/bundled-dist",
     "issues": [

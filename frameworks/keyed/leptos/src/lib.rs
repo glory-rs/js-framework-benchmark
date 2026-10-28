@@ -51,7 +51,7 @@ fn build_data(count: usize) -> Vec<RowData> {
     let mut thread_rng = thread_rng();
 
     let mut label = || [ADJECTIVES, COLOURS, NOUNS]
-        .map(|slice| slice.choose(&mut thread_rng).unwrap())
+        .map(|slice| *slice.choose(&mut thread_rng).unwrap())
         .join(" ");
 
     let id = ID_COUNTER.fetch_add(count, Ordering::Relaxed);
@@ -156,9 +156,9 @@ pub fn App() -> impl IntoView {
                             let label = row.label;
                             let is_selected = is_selected.clone();
                             template! {
-                                <tr class:danger={move || is_selected.selected(Some(row_id))}>
+                                <tr class:danger={move || is_selected.selected(&Some(row_id))}>
                                     <td class="col-md-1">{row_id.to_string()}</td>
-                                    <td class="col-md-4"><a on:click=move |_| set_selected(Some(row_id))>{label}</a></td>
+                                    <td class="col-md-4"><a on:click=move |_| set_selected.set(Some(row_id))>{move || label.get()}</a></td>
                                     <td class="col-md-1"><a on:click=move |_| remove(row_id)><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
                                     <td class="col-md-6"/>
                                 </tr>

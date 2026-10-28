@@ -1,0 +1,17 @@
+{
+  "name": "js-framework-benchmark-keyed-glory",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Glory XML display API with framework-owned keyed collection and reconciliation",
+  "license": "Apache-2.0",
+  "js-framework-benchmark": {
+    "frameworkVersion": "0.3.1-v2",
+    "frameworkHomeURL": "https://github.com/glory-rs/glory",
+    "customURL": "/bundled-dist",
+    "language": "Rust",
+    "repoURL": "https://github.com/glory-rs/glory"
+  },
+  "scripts": {
+    "build-prod": "powershell -NoProfile -ExecutionPolicy Bypass -File build.ps1"
+  }
+}
