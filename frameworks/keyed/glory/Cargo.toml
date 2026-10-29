@@ -4,7 +4,7 @@ version = "0.0.0"
 edition = "2024"
 publish = false
 [dependencies]
-glory = { path = "../../../../glory/crates/glory", default-features = false, features = ["dsl"] }
+glory = { version = "=0.6.0", path = "../../../../glory/crates/glory", default-features = false, features = ["dsl"] }
 wasm-bindgen = { version = "=0.2.129", features = ["enable-interning"] }
 js-sys = "=0.3.106"
 [workspace]

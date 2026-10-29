@@ -4,8 +4,7 @@ mod data;
 mod model;
 use glory::display::*;
 use std::cell::RefCell;
-#[glory::component]
-fn Demo(scope: &Scope) -> impl IntoView {
+fn demo(scope: &Scope) -> impl Widget {
     let model = model::Model::new(scope);
     let row_model = model.clone();
     view! {
@@ -40,5 +39,7 @@ fn Demo(scope: &Scope) -> impl IntoView {
 }
 thread_local! {static APP:RefCell<Option<App>>=const{RefCell::new(None)};}
 fn main() {
-    APP.with(|app| *app.borrow_mut() = Some(App::launch::<Demo>("main", DemoProps {}).unwrap()));
+    let app = App::at_id("main").unwrap();
+    app.render(demo(&app.scope())).unwrap();
+    APP.with(|slot| *slot.borrow_mut() = Some(app));
 }
